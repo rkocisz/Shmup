@@ -1,0 +1,3 @@
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate.dir
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/ZERO_CHECK.dir

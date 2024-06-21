@@ -1,0 +1,14 @@
+# Target labels
+ sfml-populate
+# Source files and their labels
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/ee652d9a72e8cff4711febaddf349826/sfml-populate.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/90d71c3d3c9098c61eaab03a93f83dc3/sfml-populate-complete.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-build.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-configure.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-download.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-install.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-mkdir.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-patch.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-test.rule
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-update.rule

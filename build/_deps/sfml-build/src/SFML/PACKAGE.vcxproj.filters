@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\cpp\visual studio\Shmup\build\CMakeFiles\3b0bc59f5bec013059fceb1811544644\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{FAFE2955-9FA2-38A4-979A-E24B50778FB4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

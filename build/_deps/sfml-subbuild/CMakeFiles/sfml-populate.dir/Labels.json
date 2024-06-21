@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/ee652d9a72e8cff4711febaddf349826/sfml-populate.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/90d71c3d3c9098c61eaab03a93f83dc3/sfml-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-build.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-download.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-install.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-test.rule"
+		},
+		{
+			"file" : "C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-subbuild/CMakeFiles/2852e9245262a29634ef08803258a470/sfml-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sfml-populate"
+		],
+		"name" : "sfml-populate"
+	}
+}

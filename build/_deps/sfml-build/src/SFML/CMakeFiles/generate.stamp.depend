@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeParseArguments.cmake
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-src/cmake/CompilerWarnings.cmake
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-src/cmake/Macros.cmake
+C:/Projects/cpp/visual studio/Shmup/build/_deps/sfml-src/src/SFML/CMakeLists.txt
