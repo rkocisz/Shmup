@@ -15,6 +15,7 @@ public:
 	void moveDown();
 	int getPosX() const;
 	int getPosY() const;
+	void setTexture(const sf::Texture* texture);
 
 private:
 	int posX_;

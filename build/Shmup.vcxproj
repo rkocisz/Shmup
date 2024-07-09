@@ -313,15 +313,20 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.h" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Game.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Game.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Player.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Player.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.h" />
-    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\gameLogic.cpp" />
-    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\gameLogic.h" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\common.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\inputManager.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\inputManager.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\main.cpp" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\makeStars.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\makeStars.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\windowLoop.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\windowLoop.h" />
   </ItemGroup>

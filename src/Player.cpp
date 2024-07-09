@@ -17,25 +17,25 @@ Player::Player(int posX, int posY, const sf::Texture* texture)
 
 void Player::moveLeft()
 {
-	posX_ -= 2;
+	posX_ -= 3;
 	player_.setPosition(posX_, posY_);
 }
 
 void Player::moveRight()
 {
-	posX_ += 2;
+	posX_ += 3;
 	player_.setPosition(posX_, posY_);
 }
 
 void Player::moveUp()
 {
-	posY_ -= 2;
+	posY_ -= 3;
 	player_.setPosition(posX_, posY_);
 }
 
 void Player::moveDown()
 {
-	posY_ += 2;
+	posY_ += 3;
 	player_.setPosition(posX_, posY_);
 }
 
@@ -47,4 +47,9 @@ int Player::getPosX() const
 int Player::getPosY() const
 {
 	return posY_;
+}
+
+void Player::setTexture(const sf::Texture* texture)
+{
+	player_.setTexture(texture);
 }

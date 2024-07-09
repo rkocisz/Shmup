@@ -160,6 +160,10 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 //Path to a program.
 CMAKE_MT:FILEPATH=CMAKE_MT-NOTFOUND
 
+//The minimal iOS version that will be able to run the built binaries.
+// Cannot be lower than 13.0
+CMAKE_OSX_DEPLOYMENT_TARGET:STRING=13.0
+
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
 

@@ -11,10 +11,10 @@ Bullet::Bullet(const sf::Texture* texture)
 	bullet_.setPosition(posX_, posY_);
 }
 
-void Bullet::shoot(Player& player1)
+void Bullet::shoot(Player* player1)
 {
-	posX_ = player1.getPosX();
-	posY_ = player1.getPosY() -32;
+	posX_ = player1->getPosX();
+	posY_ = player1->getPosY() -32;
 	bullet_.setPosition(posX_, posY_);
 }
 

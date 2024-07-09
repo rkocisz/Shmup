@@ -10,7 +10,7 @@ public:
 	Bullet(const sf::Texture* texture);
 	sf::RectangleShape bullet_;
 	
-	void shoot(Player& player1);
+	void shoot(Player* player1);
 	void moveUp();
 	int getPosY() const;
 
