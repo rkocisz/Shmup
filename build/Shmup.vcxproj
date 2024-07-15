@@ -315,6 +315,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.h" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\ColisionRectangle.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\ColisionRectangle.h" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Game.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Game.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Player.cpp" />
@@ -322,6 +326,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.h" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\common.h" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\deltaTime.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\deltaTime.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\inputManager.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\inputManager.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\main.cpp" />

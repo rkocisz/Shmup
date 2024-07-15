@@ -17,11 +17,11 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float animat
 }
 
 
-void Animation::run(int row)
+void Animation::run(int row, float deltaTime)
 {
 	currentRow_ = row;
 	
-	elapsed_ += frameTime;
+	elapsed_ += deltaTime;
 
 
 	if(elapsed_ >= animationFrameTime_)

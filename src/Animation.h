@@ -7,9 +7,7 @@ class Animation
 {
 public:
 	Animation(sf::Texture* texture, sf::Vector2u imageCount, float animationFrameTime);
-	void run(int row);
-	
-
+	void run(int row, float deltaTime);
 	sf::RectangleShape frame_;
 	sf::IntRect uvRect_;
 

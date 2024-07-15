@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "Player.h"
+#include "ColisionRectangle.h"
 
 class Bullet
 {
@@ -11,12 +12,18 @@ public:
 	sf::RectangleShape bullet_;
 	
 	void shoot(Player* player1);
-	void moveUp();
+	void moveUp(float deltaTime);
 	int getPosY() const;
+	void setPosition(int x, int y);
+	bool isActive() const;
+	void spawn();
+	void kill();
+	ColisionRectangle colisionRectangle_;
 
 private:
-	int posX_;
-	int posY_;
+	float posX_;
+	float posY_;
+	bool isActive_;
 	const sf::Texture* texture_;
 };
 

@@ -5,35 +5,26 @@ using namespace sf;
 
 bool leftIsClicked()
 {
-	if(Keyboard::isKeyPressed(Keyboard::Key::A))
-		return true;
-	return false;
+	return Keyboard::isKeyPressed(Keyboard::Key::A);
 }
 
 bool rightIsClicked()
 {
-	if (Keyboard::isKeyPressed(Keyboard::Key::D))
-		return true;
-	return false;
+	return Keyboard::isKeyPressed(Keyboard::Key::D);
 }
 
 bool upIsClicked()
 {
-	if (Keyboard::isKeyPressed(Keyboard::Key::W))
-		return true;
-	return false;
+	return Keyboard::isKeyPressed(Keyboard::Key::W);
+
 }
 
 bool downIsClicked()
 {
-	if (Keyboard::isKeyPressed(Keyboard::Key::S))
-		return true;
-	return false;
+	return Keyboard::isKeyPressed(Keyboard::Key::S);
 }
 
 bool spaceIsClicked()
 {
-	if (Keyboard::isKeyPressed(Keyboard::Key::Space))
-		return true;
-	return false;
+	return Keyboard::isKeyPressed(Keyboard::Key::Space);
 }

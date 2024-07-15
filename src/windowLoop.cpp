@@ -1,6 +1,7 @@
 #include "windowLoop.h"
 #include "SFML/Graphics.hpp"
 #include "Game.h"
+#include "common.h"
 
 #include <iostream>
 #include <vector>
@@ -9,8 +10,8 @@ using namespace sf;
 
 void windowLoop()
 {
-	RenderWindow window(VideoMode(960,540), "mocna gierka", Style::Close | Style::Resize);
-	window.setFramerateLimit(60);
+	RenderWindow window(VideoMode(windowWidth, windowHeight), "mocna gierka", Style::Close | Style::Resize);
+//	window.setFramerateLimit(60);
 	
 	Game game;
 
@@ -25,8 +26,8 @@ void windowLoop()
 				window.close();
 		}
 
-		game.draw(window);
 		game.update(window);
+		game.draw(window);
 
 		
 		window.display();

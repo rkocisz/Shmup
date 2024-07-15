@@ -1,55 +1,145 @@
 #include "Player.h"
+#include "common.h"
+
+#include <iostream>
 
 using namespace sf;
 
 const int playerWidth = 32;
 const int playerHeight = 32;
 
-Player::Player(int posX, int posY, const sf::Texture* texture)
+Player::Player(float posX, float posY, const sf::Texture* texture)
 	: posX_(posX)
 	, posY_(posY)
 	, texture_(texture)
+	, hp_(3)
+	, maxHp_(3)
+	, immune_(false)
 	{
 		player_.setSize(Vector2f(playerWidth, playerHeight));
 		player_.setPosition(posX_, posY_);
 		player_.setTexture(texture_);
+		colisionRectangle_.setSize(32, 32);
 	}
 
-void Player::moveLeft()
+void Player::moveLeft(float deltaTime)
 {
-	posX_ -= 3;
+	posX_ -= 180 * deltaTime;
+	if (posX_ < 0)
+		posX_ = 0;
+
+	colisionRectangle_.setPosition(posX_ + 2, posY_);
+	colisionRectangle_.setSize(28, 32);
+
 	player_.setPosition(posX_, posY_);
 }
 
-void Player::moveRight()
+void Player::moveRight(float deltaTime)
 {
-	posX_ += 3;
+	posX_ += 180 * deltaTime;
+	if (posX_ > windowWidth)
+		posX_ = 0;
+	
+	colisionRectangle_.setPosition(posX_ + 2, posY_);
+	colisionRectangle_.setSize(28, 32);
+
+	player_.setPosition(posX_, posY_);
+
+}
+
+void Player::moveUp(float deltaTime)
+{
+	posY_ -= 180 * deltaTime;
+	if (posY_ < 0)
+		posY_ = 0;
+
+	colisionRectangle_.setPosition(posX_, posY_);
+
+	player_.setPosition(posX_, posY_);
+
+}
+
+void Player::moveDown(float deltaTime)
+{
+	posY_ += 180 * deltaTime;
+	if (posY_ > windowHeight - 32)
+		posY_ = windowHeight - 32;
+
+	colisionRectangle_.setPosition(posX_, posY_);
+
 	player_.setPosition(posX_, posY_);
 }
 
-void Player::moveUp()
-{
-	posY_ -= 3;
-	player_.setPosition(posX_, posY_);
-}
-
-void Player::moveDown()
-{
-	posY_ += 3;
-	player_.setPosition(posX_, posY_);
-}
-
-int Player::getPosX() const
+float Player::getPosX() const
 {
 	return posX_;
 }
 
-int Player::getPosY() const
+float Player::getPosY() const
 {
 	return posY_;
+}
+
+int Player::getHp() const
+{
+	return hp_;
 }
 
 void Player::setTexture(const sf::Texture* texture)
 {
 	player_.setTexture(texture);
 }
+
+void Player::setPosition(int x, int y)
+{
+	posX_ = x;
+	posY_ = y;
+	player_.setPosition(posX_, posY_);
+}
+
+void Player::looseHp()
+{
+	hp_ -= 1;
+}
+
+void Player::setHp(int hp)
+{
+	hp_ = hp;
+}
+
+bool Player::isImmune() const
+{
+	return immune_;
+}
+
+void Player::makeImmune()
+{
+	immune_ = true;
+}
+
+void Player::stopImmunity()
+{
+	immune_ = false;
+}
+
+
+//bool Player::doesTouch(int x, int y, int enemyWidth, int enemyHeight)
+//{
+//	for(int i = 0; i < playerWidth; i++)
+//	{
+//		if(posX_ + i >= x && posX_ + i <= x + enemyWidth && posY_ + i >= y && posY_ <= y + enemyHeight)
+//		{
+//			std::cout << "collision";
+//			return true;
+//		}
+//
+//	//	if (posX_ + i >= x && posX_ + i <= x + enemyWidth && posY_+ i >= y && posY_ <= y + enemyHeight)
+//	//	{
+//	//		std::cout << "collision";
+//	//		return true;
+//	//	}
+//	}
+//
+//
+//	return false;
+//}
