@@ -22,9 +22,9 @@ Player::Player(float posX, float posY, const sf::Texture* texture)
 		colisionRectangle_.setSize(32, 32);
 	}
 
-void Player::moveLeft(float deltaTime)
+void Player::moveLeft()
 {
-	posX_ -= 180 * deltaTime;
+	posX_ -= 5;
 	if (posX_ < 0)
 		posX_ = 0;
 
@@ -34,11 +34,11 @@ void Player::moveLeft(float deltaTime)
 	player_.setPosition(posX_, posY_);
 }
 
-void Player::moveRight(float deltaTime)
+void Player::moveRight()
 {
-	posX_ += 180 * deltaTime;
-	if (posX_ > windowWidth)
-		posX_ = 0;
+	posX_ += 5;
+	if (posX_ >= windowWidth - 32)
+		posX_ = windowWidth - 32;
 	
 	colisionRectangle_.setPosition(posX_ + 2, posY_);
 	colisionRectangle_.setSize(28, 32);
@@ -47,9 +47,9 @@ void Player::moveRight(float deltaTime)
 
 }
 
-void Player::moveUp(float deltaTime)
+void Player::moveUp()
 {
-	posY_ -= 180 * deltaTime;
+	posY_ -= 5;
 	if (posY_ < 0)
 		posY_ = 0;
 
@@ -59,9 +59,9 @@ void Player::moveUp(float deltaTime)
 
 }
 
-void Player::moveDown(float deltaTime)
+void Player::moveDown()
 {
-	posY_ += 180 * deltaTime;
+	posY_ += 5;
 	if (posY_ > windowHeight - 32)
 		posY_ = windowHeight - 32;
 

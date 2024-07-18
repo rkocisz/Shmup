@@ -56,12 +56,9 @@ void Enemy::spawn()
 	isActive_ = true;
 }
 
-void Enemy::kill()
+void Enemy::despawn()
 {
 	isActive_ = false;
-	posX_ = -32;
-	posY_ = -32;
-	colisionRectangle_.setPosition(-32, -32);
 }
 
 int Enemy::getHp() const

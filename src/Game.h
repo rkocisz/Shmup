@@ -7,7 +7,7 @@
 #include "Animation.h"
 #include "Enemy.h"
 #include "deltaTime.h"
-
+#include "Explosion.h"
 
 class Game {
 public:
@@ -22,6 +22,7 @@ private:
 	Animation* enemyAnimation_;
 	std::vector<Bullet> bullets_;
 	std::vector<Enemy> enemies_; 
+	std::vector<Explosion> explosions_;
 	std::vector<sf::RectangleShape> starField_;
 	sf::Texture fireTextures_;
 	sf::Texture playerTexture_;
@@ -30,6 +31,7 @@ private:
 	sf::Texture bulletTexture_;
 	sf::Texture enemyTextures_;
 	sf::Texture heartTexture_;
+	sf::Texture explosionTextures_;
 	sf::Texture emptyHeartTexture_;
 	sf::Texture hitEnemyTextures_;
 	sf::RectangleShape fire_;
@@ -44,6 +46,7 @@ private:
 	
 
 	float elapsed_;
+	float elapsed1_;
 	float elapsed2_;
 	float elapsed3_;
 

@@ -5,7 +5,7 @@
 
 void makeStars(std::vector<sf::RectangleShape>& starField);
 
-void updateStars(std::vector<sf::RectangleShape>& starField, float deltaTime);
+void updateStars(std::vector<sf::RectangleShape>& starField);
 
 float getRandomInt(int max);
 

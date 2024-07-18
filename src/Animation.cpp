@@ -14,14 +14,16 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float animat
 
 	uvRect_.width = texture->getSize().x / imageCount.x;
 	uvRect_.height = texture->getSize().y / imageCount.y;
+	uvRect_.left = currentFrame_ * uvRect_.width;
+	uvRect_.top = currentRow_ * uvRect_.height;
 }
 
 
-void Animation::run(int row, float deltaTime)
+void Animation::run(int row)
 {
 	currentRow_ = row;
 	
-	elapsed_ += deltaTime;
+	elapsed_ += targetFrameTime;
 
 
 	if(elapsed_ >= animationFrameTime_)
@@ -39,4 +41,9 @@ void Animation::run(int row, float deltaTime)
 	uvRect_.left = currentFrame_ * uvRect_.width;
 	uvRect_.top = currentRow_ * uvRect_.height;
 
+}
+
+int Animation::getCurrentFrame()
+{
+	return currentFrame_;
 }

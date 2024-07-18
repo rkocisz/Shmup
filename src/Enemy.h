@@ -16,7 +16,7 @@ public:
 	int getSizeY() const;
 	bool isActive() const;
 	void spawn();
-	void kill();
+	void despawn();
 	int getHp() const;
 	void looseHp();
 	void setHp(int hp);

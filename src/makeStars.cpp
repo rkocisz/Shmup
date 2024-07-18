@@ -14,16 +14,16 @@ void makeStars(std::vector<sf::RectangleShape>& starField)
 	}
 }
 
-void updateStars(std::vector<sf::RectangleShape>& starField, float deltaTime)
+void updateStars(std::vector<sf::RectangleShape>& starField)
 {
 	for (int i = 0; i < starField.size(); i++)
 	{
 		if(i % 3 == 1)
-			starField[i].move(0, 50.0f * deltaTime);
+			starField[i].move(0, 0.7f);
 		else if (i % 3 == 2)
-			starField[i].move(0, 35.0f * deltaTime);
+			starField[i].move(0, 0.5f);
 		else 
-			starField[i].move(0, 25.0f * deltaTime);
+			starField[i].move(0, 0.3f);
 
 		if (starField[i].getPosition().y > 540)
 			starField[i].move(0, -542);

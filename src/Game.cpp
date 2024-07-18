@@ -15,6 +15,7 @@ Game::Game()
 	, enemyAnimation_(nullptr)
 	, gameState_(0)
 	, elapsed_(0)
+	, elapsed1_(0)
 	, elapsed2_(0)
 	, elapsed3_(0)
 {
@@ -24,6 +25,7 @@ Game::Game()
 	bulletTexture_.loadFromFile("../textures/bullet.png");
 	fireTextures_.loadFromFile("../textures/fireAnimation.png");
 	enemyTextures_.loadFromFile("../textures/enemyAnimation.png");
+	explosionTextures_.loadFromFile("../textures/explosionAnimation.png");
 	heartTexture_.loadFromFile("../textures/heart.png");
 	emptyHeartTexture_.loadFromFile("../textures/emptyHeart.png");
 	hitEnemyTextures_.loadFromFile("../textures/hitEnemyAnimation.png");
@@ -62,6 +64,10 @@ Game::Game()
 	enemy.setPosition(300, 50);
 	Bullet bullet(&bulletTexture_);
 
+	enemies_.reserve(128);
+	bullets_.reserve(128);
+	explosions_.reserve(10);
+
 	for (int i = 0; i < 128; i++)
 	{
 		enemies_.push_back(enemy);
@@ -70,6 +76,11 @@ Game::Game()
 	for (int i = 0; i < 128; i++)
 	{
 		bullets_.push_back(bullet);
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		explosions_.push_back(Explosion(&explosionTextures_));
 	}
 
 	for(int i = 0; i < 10; i++)
@@ -93,20 +104,31 @@ Game::~Game()
 
 void Game::update(RenderWindow& window)
 {
-	switch (gameState_)
+	updateDeltaTime(deltaTime_);
+
+	elapsed_ += deltaTime_;
+	if(elapsed_ >= targetFrameTime)
 	{
-	case 0:
-		updateStart();
-		break;
+		switch (gameState_)
+		{
+		case 0:
+			updateStart();
+			break;
 
-	case 1:
-		updateGame();
-		break;
+		case 1:
+			updateGame();
+			break;
 
-	case 2:
-		updateOver();
-		break;
+		case 2:
+			updateOver();
+			break;
+		}
+
+	elapsed_ -= targetFrameTime;
+
 	}
+
+
 }
 
 
@@ -130,8 +152,6 @@ void Game::draw(sf::RenderWindow& window)
 
 void Game::updateGame()
 {
-	updateDeltaTime(deltaTime_);
-
 	player1_->colisionRectangle_.setSize(32, 32);
 	player1_->colisionRectangle_.setPosition(player1_->getPosX(), player1_->getPosY());
 
@@ -139,23 +159,45 @@ void Game::updateGame()
 	player1_->setTexture(&playerTexture_);
 
 
-	fireAnimation_->run(0, deltaTime_);
-	enemyAnimation_->run(0, deltaTime_);
+	fireAnimation_->run(0);
+	enemyAnimation_->run(0);
+
+	for (int i = 0; i < explosions_.size(); i++)
+	{
+		if(explosions_[i].isActive())
+			explosions_[i].explosionAnimation_->run(0);
+	}
+
 
 	fire_.setTextureRect(fireAnimation_->uvRect_);
 
-		for (int i = 0; i < enemies_.size(); i++)
-		{
-			if(enemies_[i].isActive())
-			enemies_[i].enemy_.setTextureRect(enemyAnimation_->uvRect_);
-		}
+	for (int i = 0; i < enemies_.size(); i++)
+	{
+		if(enemies_[i].isActive())
+		enemies_[i].enemy_.setTextureRect(enemyAnimation_->uvRect_);
+	}
 
-	updateStars(starField_, deltaTime_);
+	for (int i = 0; i < explosions_.size(); i++)
+	{
+		if(explosions_[i].isActive())
+			explosions_[i].explosion_.setTextureRect(explosions_[i].explosionAnimation_->uvRect_);
+	}
+
+	for (int i = 0; i < explosions_.size(); i++)
+	{
+		if (enemies_[i].isActive() && explosions_[i].explosionAnimation_->getCurrentFrame() == 4)
+			{
+				explosions_[i].despawn();
+				explosions_[i].explosionAnimation_->run(0);
+			}
+	}
+
+	updateStars(starField_);
 
 //moving stuff
 	if (leftIsClicked())
 	{
-		player1_->moveLeft(deltaTime_);
+		player1_->moveLeft();
 		player1_->setTexture(&playerTextureLeft_);
 
 		fire_.setPosition(player1_->getPosX() - 1, player1_->getPosY() + 34);
@@ -163,7 +205,7 @@ void Game::updateGame()
 
 	if (rightIsClicked())
 	{
-		player1_->moveRight(deltaTime_);
+		player1_->moveRight();
 		player1_->setTexture(&playerTextureRight_);
 
 		fire_.setPosition(player1_->getPosX() + 1, player1_->getPosY() + 34);
@@ -171,14 +213,14 @@ void Game::updateGame()
 
 	if (upIsClicked())
 	{
-		player1_->moveUp(deltaTime_);
+		player1_->moveUp();
 
 		fire_.setPosition(player1_->getPosX(), player1_->getPosY() + 34);
 	}
 
 	if (downIsClicked())
 	{
-		player1_->moveDown(deltaTime_);
+		player1_->moveDown();
 
 		fire_.setPosition(player1_->getPosX(), player1_->getPosY() + 34);
 	}
@@ -191,9 +233,9 @@ void Game::updateGame()
 //shooting
 	if (spaceIsClicked())
 	{
-		elapsed_ += deltaTime_;
+		elapsed1_ += targetFrameTime;
 
-		if (elapsed_ >= bulletFireDelay)
+		if (elapsed1_ >= bulletFireDelay)
 		{
 			for(int i = 0; i < bullets_.size(); i++)
 			{
@@ -206,12 +248,12 @@ void Game::updateGame()
 			
 			}
 
-			elapsed_ = 0.f;
+			elapsed1_ = 0.f;
 		}
 	}
 	else
 	{
-		elapsed_ = 0.24f;
+		elapsed1_ = 0.24f;
 	}
 
 
@@ -219,11 +261,11 @@ void Game::updateGame()
 	{
 		if (bullets_[i].isActive())
 		{
-			bullets_[i].moveUp(deltaTime_);
+			bullets_[i].moveUp();
 		}
 		
 		if(bullets_[i].getPosY() < -32)
-			bullets_[i].kill();
+			bullets_[i].despawn();
 	}
 	
 
@@ -239,7 +281,7 @@ void Game::updateGame()
 					if(bullets_[j].colisionRectangle_.isColiding(enemies_[i].colisionRectangle_))
 					{
 						std::cout << "col";
-						bullets_[j].kill();
+						bullets_[j].despawn();
 						enemies_[i].looseHp();
 						enemies_[i].enemy_.setTexture(&hitEnemyTextures_);
 						elapsed3_ = 0;
@@ -248,11 +290,12 @@ void Game::updateGame()
 
 				if(enemies_[i].isHit())
 				{
-					elapsed3_ += deltaTime_;
-					if(elapsed3_ >= 30 * deltaTime_)
+					elapsed3_ += targetFrameTime;
+					if(elapsed3_ >= 0.1)
 					{
 						enemies_[i].enemy_.setTexture(&enemyTextures_);
 						elapsed3_ = 0;
+						enemies_[i].setNotHit();
 					}
 				}
 
@@ -264,10 +307,9 @@ void Game::updateGame()
 						player1_->makeImmune();
 					}
 				}
-
-				if (player1_->isImmune())
+				else
 				{
-					elapsed2_ += deltaTime_;
+					elapsed2_ += targetFrameTime;
 					if (elapsed2_ >= 30)
 					{
 						player1_->stopImmunity();
@@ -276,7 +318,20 @@ void Game::updateGame()
 				}
 
 				if (enemies_[i].getHp() <= 0)
-					enemies_[i].kill();
+				{
+					for(int k = 0; k < explosions_.size(); k++)
+					{
+						if (explosions_[k].isActive() == false)
+						{
+							explosions_[k].spawn();
+							explosions_[k].setPosition(enemies_[i].getPosX(), enemies_[i].getPosY());
+							explosions_[k].explosion_.setTextureRect(explosions_[k].explosionAnimation_->uvRect_);
+							goto a;
+						}
+					}
+					a:
+					enemies_[i].despawn();
+				}
 		}
 	}
 	if (player1_->getHp() <= 0)
@@ -287,39 +342,37 @@ void Game::updateGame()
 
 void Game::updateStart()
 {
-	updateDeltaTime(deltaTime_);
-	updateStars(starField_, deltaTime_);
+	updateStars(starField_);
 
-	elapsed_ += deltaTime_;
+	elapsed1_ += targetFrameTime;
 
 
-	if (elapsed_ > 1.4f)
-		elapsed_ = 0;
+	if (elapsed1_ > 1.4f)
+		elapsed1_ = 0;
 
 	if(spaceIsClicked())
 	{
 		startGame();
-		elapsed_ = 0;
+		elapsed1_ = 0;
 	}
 }
 
 void Game::updateOver()
 {
-	updateDeltaTime(deltaTime_);
-	updateStars(starField_, deltaTime_);
+	updateStars(starField_);
 	startText_.setString("Press space to restart");
 	startText_.setPosition(200, 400);
 
-	elapsed_ += deltaTime_;
+	elapsed1_ += targetFrameTime;
 
 
-	if (elapsed_ > 1.4f)
-		elapsed_ = 0;
+	if (elapsed1_ > 1.4f)
+		elapsed1_ = 0;
 
 	if (spaceIsClicked())
 	{
 		startGame();
-		elapsed_ = 0;
+		elapsed1_ = 0;
 	}
 }
 
@@ -339,6 +392,12 @@ void Game::drawGame(sf::RenderWindow& window)
 	{
 		if(enemies_[i].isActive())
 			window.draw(enemies_[i].enemy_);
+	}
+
+	for (int i = 0; i < explosions_.size(); i++)
+	{
+		if(explosions_[i].isActive())
+			window.draw(explosions_[i].explosion_);
 	}
 
 
@@ -376,7 +435,7 @@ void Game::drawStart(sf::RenderWindow& window)
 	for (int i = 0; i < starField_.size(); i++)
 		window.draw(starField_[i]);
 
-	if (elapsed_ < 0.7f)
+	if (elapsed1_ < 0.7f)
 	{
 		window.draw(startText_);
 	}
@@ -389,7 +448,7 @@ void Game::drawOver(sf::RenderWindow& window)
 	for (int i = 0; i < starField_.size(); i++)
 		window.draw(starField_[i]);
 
-	if (elapsed_ < 0.7f)
+	if (elapsed1_ < 0.7f)
 	{
 		window.draw(startText_);
 	}

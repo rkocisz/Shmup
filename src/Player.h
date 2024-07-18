@@ -10,10 +10,10 @@ public:
 	sf::RectangleShape player_;
 
 	Player(float posX, float posY, const sf::Texture* texture);
-	void moveLeft(float deltaTime);
-	void moveRight(float deltaTime);
-	void moveUp(float deltaTime);
-	void moveDown(float deltaTime);
+	void moveLeft();
+	void moveRight();
+	void moveUp();
+	void moveDown();
 	float getPosX() const;
 	float getPosY() const;
 	int getHp() const;

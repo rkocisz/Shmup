@@ -10,6 +10,9 @@
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +46,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Game.h">

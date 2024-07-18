@@ -319,6 +319,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\ColisionRectangle.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.h" />
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.cpp" />
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Game.cpp" />
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Game.h" />
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Player.cpp" />

@@ -12,12 +12,12 @@ public:
 	sf::RectangleShape bullet_;
 	
 	void shoot(Player* player1);
-	void moveUp(float deltaTime);
+	void moveUp();
 	int getPosY() const;
 	void setPosition(int x, int y);
 	bool isActive() const;
 	void spawn();
-	void kill();
+	void despawn();
 	ColisionRectangle colisionRectangle_;
 
 private:

@@ -20,9 +20,9 @@ void Bullet::shoot(Player* player1)
 	bullet_.setPosition(posX_, posY_);
 }
 
-void Bullet::moveUp(float deltaTime)
+void Bullet::moveUp()
 {
-	posY_ -= 600 * deltaTime;
+	posY_ -= 10;
 	bullet_.setPosition(posX_, posY_);
 	colisionRectangle_.setPosition(posX_ + 8, posY_);
 }
@@ -49,10 +49,8 @@ void Bullet::spawn()
 	isActive_ = true;
 }
 
-void Bullet::kill()
+void Bullet::despawn()
 {
 	isActive_ = false;
-	posX_ = -32;
-	posY_ = -32;
 	colisionRectangle_.setPosition(-100, -100);
 }
