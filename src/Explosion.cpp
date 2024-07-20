@@ -5,7 +5,7 @@ Explosion::Explosion(sf::Texture* texture)
 , texture_(texture)
 , explosionAnimation_(nullptr)
 {
-	explosionAnimation_ = new Animation(texture_, sf::Vector2u(5, 1), 1.0f);
+	explosionAnimation_ = new Animation(texture_, sf::Vector2u(5, 1), 0.1f);
 	explosion_.setTexture(texture_);
 	explosion_.setSize(sf::Vector2f(32, 32));
 }

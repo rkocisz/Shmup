@@ -7,8 +7,9 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float animat
 : animationFrameTime_(animationFrameTime)
 , imageCount_(imageCount)
 , elapsed_(0)
-,currentFrame_(0)
-,currentRow_(0)
+, currentFrame_(0)
+, currentRow_(0)
+, isAnimationDone_(false)
 {
 	
 
@@ -21,6 +22,8 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float animat
 
 void Animation::run(int row)
 {
+	isAnimationDone_ = false;
+
 	currentRow_ = row;
 	
 	elapsed_ += targetFrameTime;
@@ -34,6 +37,7 @@ void Animation::run(int row)
 		if (currentFrame_ >= imageCount_.x)
 		{
 			currentFrame_ = 0;
+			isAnimationDone_ = true;
 		}
 
 	}
@@ -46,4 +50,9 @@ void Animation::run(int row)
 int Animation::getCurrentFrame()
 {
 	return currentFrame_;
+}
+
+bool Animation::isAnimationDone() const
+{
+	return isAnimationDone_;
 }

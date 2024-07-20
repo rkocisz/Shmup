@@ -24,7 +24,7 @@ Player::Player(float posX, float posY, const sf::Texture* texture)
 
 void Player::moveLeft()
 {
-	posX_ -= 5;
+	posX_ -= 3;
 	if (posX_ < 0)
 		posX_ = 0;
 
@@ -36,7 +36,7 @@ void Player::moveLeft()
 
 void Player::moveRight()
 {
-	posX_ += 5;
+	posX_ += 3;
 	if (posX_ >= windowWidth - 32)
 		posX_ = windowWidth - 32;
 	
@@ -49,7 +49,7 @@ void Player::moveRight()
 
 void Player::moveUp()
 {
-	posY_ -= 5;
+	posY_ -= 3;
 	if (posY_ < 0)
 		posY_ = 0;
 
@@ -61,7 +61,7 @@ void Player::moveUp()
 
 void Player::moveDown()
 {
-	posY_ += 5;
+	posY_ += 3;
 	if (posY_ > windowHeight - 32)
 		posY_ = windowHeight - 32;
 

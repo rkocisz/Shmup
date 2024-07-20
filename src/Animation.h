@@ -9,6 +9,8 @@ public:
 	Animation(sf::Texture* texture, sf::Vector2u imageCount, float animationFrameTime);
 	void run(int row);
 	int getCurrentFrame();
+	bool isAnimationDone() const;
+
 
 	sf::RectangleShape frame_;
 	sf::IntRect uvRect_;
@@ -19,6 +21,7 @@ private:
 	float elapsed_;
 	int currentFrame_;
 	int currentRow_;
+	bool isAnimationDone_;
 	sf::Vector2u textureSize_;
 	sf::Vector2u imageCount_;
 };

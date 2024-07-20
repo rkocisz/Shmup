@@ -165,7 +165,10 @@ void Game::updateGame()
 	for (int i = 0; i < explosions_.size(); i++)
 	{
 		if(explosions_[i].isActive())
+		{
 			explosions_[i].explosionAnimation_->run(0);
+			explosions_[i].explosion_.setTextureRect(explosions_[i].explosionAnimation_->uvRect_);
+		}
 	}
 
 
@@ -179,17 +182,11 @@ void Game::updateGame()
 
 	for (int i = 0; i < explosions_.size(); i++)
 	{
-		if(explosions_[i].isActive())
-			explosions_[i].explosion_.setTextureRect(explosions_[i].explosionAnimation_->uvRect_);
-	}
-
-	for (int i = 0; i < explosions_.size(); i++)
-	{
-		if (enemies_[i].isActive() && explosions_[i].explosionAnimation_->getCurrentFrame() == 4)
-			{
-				explosions_[i].despawn();
-				explosions_[i].explosionAnimation_->run(0);
-			}
+		if (explosions_[i].explosionAnimation_->isAnimationDone())
+		{
+			explosions_[i].despawn();
+			explosions_[i].explosionAnimation_->run(0);
+		}
 	}
 
 	updateStars(starField_);
