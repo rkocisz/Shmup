@@ -3,11 +3,14 @@
 
 #include "SFML/Graphics.hpp"
 #include "ColisionRectangle.h"
+#include "Animation.h"
 
 class Enemy
 {
 public:
-	Enemy(sf::Texture *texture);
+	Enemy(sf::Texture *texture, sf::Texture* hitEnemyTextures);
+	void update();
+	void draw(sf::RenderWindow& window);
 	void setPosition(int x, int y);
 	void setSize(int x, int y);
 	float getPosX() const;
@@ -21,17 +24,25 @@ public:
 	void looseHp();
 	void setHp(int hp);
 	bool isHit() const;
-	void setNotHit();
+	void hit();
+	bool didJustDie();
 
 	sf::RectangleShape enemy_;
 	ColisionRectangle colisionRectangle_;
+	Animation* enemyAnimation_;
 
 private:
 	int posX_;
 	int posY_;
-	bool isActive_;
 	int hp_;
+	bool isActive_;
 	bool isHit_;
+	bool justDied_;
+	float elapsed_;
+
+	sf::Texture* hitEnemyTextures_;
+	sf::Texture* enemyTextures_;
+
 };
 
 #endif

@@ -8,6 +8,11 @@
 #include "Enemy.h"
 #include "deltaTime.h"
 #include "Explosion.h"
+#include "BulletPool.h"
+#include "EnemyPool.h"
+#include "ExplosionPool.h"
+#include "Shockwave.h"
+#include "ShockwavePool.h"
 
 class Game {
 public:
@@ -18,23 +23,16 @@ public:
 
 private:
 	Player* player1_;
-	Animation* fireAnimation_;
-	Animation* enemyAnimation_;
-	std::vector<Bullet> bullets_;
-	std::vector<Enemy> enemies_; 
-	std::vector<Explosion> explosions_;
+	BulletPool bulletPool_;
+	EnemyPool enemyPool_;
+	ExplosionPool explosions_;
+	ShockwavePool shockwaves_;
 	std::vector<sf::RectangleShape> starField_;
-	sf::Texture fireTextures_;
-	sf::Texture playerTexture_;
-	sf::Texture playerTextureLeft_;
-	sf::Texture playerTextureRight_;
-	sf::Texture bulletTexture_;
 	sf::Texture enemyTextures_;
 	sf::Texture heartTexture_;
 	sf::Texture explosionTextures_;
 	sf::Texture emptyHeartTexture_;
 	sf::Texture hitEnemyTextures_;
-	sf::RectangleShape fire_;
 	sf::RectangleShape heart_;
 	sf::RectangleShape emptyHeart_;
 	sf::Font font_;
@@ -49,6 +47,7 @@ private:
 	float elapsed1_;
 	float elapsed2_;
 	float elapsed3_;
+	float elapsed4_;
 
 	void updateGame();
 	void updateStart();
@@ -58,6 +57,8 @@ private:
 	void drawGame(sf::RenderWindow& window);
 	void drawStart(sf::RenderWindow& window);
 	void drawOver(sf::RenderWindow& window);
+
+	void collisionDetection();
 
 };
 

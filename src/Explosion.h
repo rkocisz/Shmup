@@ -3,26 +3,32 @@
 
 #include "SFML/Graphics.hpp"
 #include "Animation.h"
+#include "Particle.h"
+#include "Enemy.h"
+#include "Shockwave.h"
 
 class Explosion
 {
 public:
 	
-	Explosion(sf::Texture* texture);
+	
+	Explosion();
+	void update(std::vector<Enemy> enemies);
+	void draw(sf::RenderWindow& window);
 	void setPosition(float x, float y);
-
-	sf::RectangleShape explosion_;
-	Animation* explosionAnimation_;
-
 	bool isActive() const;
 	void spawn();
 	void despawn();
 
+	Shockwave shockwave_;
+	std::vector<Particle> particles_;
+
 private:
 	float posX_;
 	float posY_;
+	float elapsed_;
 	bool isActive_;
-	sf::Texture* texture_;
+	bool isDone_;
 };
 
 #endif

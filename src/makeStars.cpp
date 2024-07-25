@@ -1,15 +1,15 @@
 #include "makeStars.h"
 #include "common.h"
 #include <cstdlib>
+#include <iostream>
 
 void makeStars(std::vector<sf::RectangleShape>& starField)
 {
 	sf::RectangleShape star(sf::Vector2f(2, 2));
-	srand((unsigned)time(NULL));
 	
 	for(int i = 0; i < 160; i++)
 	{
-		star.setPosition(getRandomInt(windowWidth), getRandomInt(windowHeight));
+		star.setPosition(getRandomFloat(0, windowWidth), getRandomFloat(0, windowHeight));
 		starField.push_back(star);
 	}
 }
@@ -30,7 +30,7 @@ void updateStars(std::vector<sf::RectangleShape>& starField)
 	}
 }
 
-float getRandomInt(int max)
+float getRandomFloat(float min, float max)
 {
-	return rand() % max;
+	return ((float)rand() / RAND_MAX) * (max - min) + min;
 }

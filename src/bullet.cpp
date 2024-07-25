@@ -1,8 +1,11 @@
 #include "bullet.h"
+#include "inputManager.h"
+#include "common.h"
 
 Bullet::Bullet(const sf::Texture* texture)
 : texture_ (texture)
 , isActive_ (false)
+, isHit_ (false)
 {
 	posX_ = 0;
 	posY_ = 0;
@@ -11,6 +14,32 @@ Bullet::Bullet(const sf::Texture* texture)
 	bullet_.setTexture(texture_);
 	bullet_.setPosition(posX_, posY_);
 	colisionRectangle_.setSize(16, 32);
+}
+
+void Bullet::update()
+{
+	if (isActive_)
+	{
+		moveUp();
+
+		if (posY_ < -32)
+		{
+			despawn();
+		}
+
+		if(isHit_)
+		{
+			despawn();
+			isHit_ = false;
+		}
+	}
+
+
+}
+
+void Bullet::draw(sf::RenderWindow& window)
+{
+	window.draw(bullet_);
 }
 
 void Bullet::shoot(Player* player1)
@@ -22,9 +51,14 @@ void Bullet::shoot(Player* player1)
 
 void Bullet::moveUp()
 {
-	posY_ -= 10;
+	posY_ -= 9;
 	bullet_.setPosition(posX_, posY_);
 	colisionRectangle_.setPosition(posX_ + 8, posY_);
+}
+
+int Bullet::getPosX() const
+{
+	return posX_;
 }
 
 int Bullet::getPosY() const
@@ -53,4 +87,14 @@ void Bullet::despawn()
 {
 	isActive_ = false;
 	colisionRectangle_.setPosition(-100, -100);
+}
+
+void Bullet::hit()
+{
+	isHit_ = true;
+}
+
+bool Bullet::isHit() const
+{
+	return isHit_;
 }

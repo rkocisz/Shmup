@@ -4,22 +4,40 @@
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\BulletPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\ColisionRectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\EnemyPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\ExplosionPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.cpp">
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\Shockwave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\ShockwavePool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Projects\cpp\visual studio\Shmup\src\deltaTime.cpp">
@@ -42,22 +60,40 @@
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\BulletPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\ColisionRectangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\EnemyPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\ExplosionPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\bullet.h">
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\Shockwave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\ShockwavePool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\cpp\visual studio\Shmup\src\common.h">

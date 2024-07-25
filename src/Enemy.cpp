@@ -1,15 +1,70 @@
 #include "Enemy.h"
+#include "common.h"
 
-Enemy::Enemy(sf::Texture* texture)
-: posX_(0)
+using namespace sf;
+
+Enemy::Enemy(sf::Texture* enemyTextures, sf::Texture* hitEnemyTextures)
+: enemyAnimation_(nullptr)
+, posX_(0)
 , posY_(-32)
+, elapsed_(0)
 , isActive_ (false)
+, isHit_(false)
+, justDied_(false)
 , hp_(3)
+, enemyTextures_(enemyTextures)
+, hitEnemyTextures_(hitEnemyTextures)
 {
-	enemy_.setTexture(texture);
+	enemyAnimation_ = new Animation(enemyTextures_, Vector2u(4, 1), 100.0f);
+
+	enemy_.setTexture(enemyTextures_);
 	enemy_.setSize(sf::Vector2f(32, 32));
 	colisionRectangle_.setSize(32, 32);
 	colisionRectangle_.setPosition(posX_, posY_);
+}
+
+void Enemy::update()
+{
+	justDied_ = false;
+
+	enemyAnimation_->run(0);
+
+	if(isActive_)
+	{
+		enemy_.setTextureRect(enemyAnimation_->uvRect_);
+
+		colisionRectangle_.setPosition(posX_, posY_);
+	
+		if(isHit_)
+		{
+			looseHp();
+			enemy_.setTexture(hitEnemyTextures_);
+			isHit_ = false;
+			elapsed_ = 0;
+		}
+
+		if(enemy_.getTexture() == hitEnemyTextures_)
+		{
+			elapsed_ += targetFrameTime;
+			if(elapsed_ >= 0.1f)
+			{
+				enemy_.setTexture(enemyTextures_);
+				elapsed_ = 0;
+			}
+		}
+
+		if (hp_ <= 0)
+		{
+			justDied_ = true;
+			despawn();
+		}
+	}
+
+}
+
+void Enemy::draw(sf::RenderWindow& window)
+{
+	window.draw(enemy_);
 }
 
 void Enemy::setPosition(int x, int y)
@@ -69,7 +124,6 @@ int Enemy::getHp() const
 void Enemy::looseHp()
 {
 	hp_ -= 1;
-	isHit_ = true;
 }
 
 void Enemy::setHp(int hp)
@@ -82,8 +136,13 @@ bool Enemy::isHit() const
 	return isHit_;
 }
 
-void Enemy::setNotHit()
+void Enemy::hit()
 {
-	isHit_ = false;
+	isHit_ = true;
+}
+
+bool Enemy::didJustDie()
+{
+	return justDied_;
 }
 
